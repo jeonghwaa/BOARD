@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><%@ taglib prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
-<title>board</title>
+<title>board list</title>
 
 <style>
 body {
@@ -34,6 +34,7 @@ body {
 		location.href = "${pageContext.request.contextPath}/board/boardForm";
 	})
 
+	//상세 조회
 	function fn_contentView(bid) {
 		var url = "${pageContext.request.contextPath}/board/getBoardContent";
 		url = url + "?bid=" + bid;
@@ -66,26 +67,22 @@ body {
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${empty boardList }">
-								<tr>
-									<td colspan="5" align="center">데이터가 없습니다.</td>
-								</tr>
-							</c:when> 				
-								<c:when test="${!empty boardList}">
-								<c:forEach var="list" items="${boardList}">
-									<tr>
-										<td><c:out value="${list.bid}" /></td>
-										<td>
-											<a href="#" onClick="fn_contentView(<c:out value="${list.bid}"/>)">
-												<c:out value="${list.title}" />
-											</a>
-										</td>
-										<td><c:out value="${list.reg_id}" /></td>
-										<td><c:out value="${list.view_cnt}" /></td>
-										<td><c:out value="${list.reg_dt}" /></td>
-									</tr>
-								</c:forEach>
-							</c:when>
+						<c:when test="${empty boardList}">데이터가 없습니다.</c:when> 		
+						<c:when test="${!empty boardList}">
+						<c:forEach var="list" items="${boardList}">
+							<tr>
+								<td><c:out value="${list.bid}" /></td>
+								<td>
+								<a href="#" onClick="fn_contentView(<c:out value="${list.bid}" />)">
+									<c:out value="${list.title}" />
+								</a>
+								</td>
+								<td><c:out value="${list.reg_id}" /></td>
+								<td><c:out value="${list.view_cnt}" /></td>
+								<td><c:out value="${list.reg_dt}" /></td>
+							</tr>
+						</c:forEach>
+						</c:when>
 						</c:choose>
 					</tbody>
 				</table>

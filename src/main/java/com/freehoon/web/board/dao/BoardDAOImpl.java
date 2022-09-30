@@ -12,6 +12,7 @@ import com.freehoon.web.board.model.BoardVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
+	
 	@Inject
 	private SqlSession sqlSession;
 

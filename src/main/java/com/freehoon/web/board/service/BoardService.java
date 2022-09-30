@@ -14,4 +14,10 @@ public interface BoardService {
 	
 	//게시판 상세보기
 	public BoardVO getBoardContent(int bid) throws Exception;
+
+	//수정
+	public void updateBoard(BoardVO boardVO);
+	
+	//삭제
+	public void deleteBoard(int bid) throws Exception;
 }

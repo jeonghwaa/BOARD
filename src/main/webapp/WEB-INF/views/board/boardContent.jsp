@@ -11,11 +11,39 @@
 <meta charset="UTF-8">
 <title>board</title>
 <script>
+	//목록으로 이동 
+	$(document)
+			.on(
+					'click',
+					'#btnList',
+					function() {
+						location.href = "${pageContext.request.contextPath}/board/getBoardList";
+					});
 
-	$(document).on('click','#btnList',function() {
-		location.href = "${pageContext.request.contextPath}/board/getBoardList";
+	//수정버튼 클릭
+	$(document).on('click', '#btnUpdate', function() {
+		var url = "${pageContext.request.contextPath}/board/editForm";
+
+		url = url + "?bid=" + $
+		{
+			boardContent.bid
+		}
+		;
+		url = url + "&mode=edit";
+		location.href = url;
 	});
-	
+
+	//삭제 버튼 클릭 이벤트	
+
+	$(document).on('click', '#btnDelete', function() {
+		var url = "${pageContext.request.contextPath}/board/deleteBoard";
+		url = url + "?bid=" + $
+		{
+			boardContent.bid
+		}
+		;
+		location.href = url;
+	});
 </script>
 </head>
 <body>
@@ -27,15 +55,16 @@
 					<c:out value="${boardContent.title}" />
 				</div>
 				<div class="board_info_box">
-					<span class="board_author">
-					<c:out value="${boardContent.reg_id}" />,</span>
-						<span class="board_date">
-							<c:out value="${boardContent.reg_dt}" />
-						</span>
+					<span class="board_author"> <c:out
+							value="${boardContent.reg_id}" />,
+					</span> <span class="board_date"> <c:out
+							value="${boardContent.reg_dt}" />
+					</span>
 				</div>
 				<div class="board_content">${boardContent.content}</div>
 				<div class="board_tag">
-					TAG : <c:out value="${boardContent.tag}" />
+					TAG : 
+					<c:out value="${boardContent.tag}" />
 				</div>
 			</div>
 			<div style="margin-top: 20px">

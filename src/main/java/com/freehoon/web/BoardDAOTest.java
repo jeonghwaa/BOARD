@@ -61,8 +61,8 @@ public class BoardDAOTest {
 	public void testInsertBoard() throws Exception {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setCate_cd("1");
-		boardVO.setTitle("첫번째 게시물 입니다.");
-		boardVO.setContent("첫번째 게시물입니다.");
+		boardVO.setTitle("두번째 게시물 입니다.");
+		boardVO.setContent("두번째 게시물입니다.");
 		boardVO.setTag("1");
 		boardVO.setReg_id("1");
 		int result = boardDAO.insertBoard(boardVO);
@@ -75,7 +75,6 @@ public class BoardDAOTest {
 	}
 
 	@Test
-	@Ignore
 	public void testUpdateBoard() throws Exception {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setBid(1);
