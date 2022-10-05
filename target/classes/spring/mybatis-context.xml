@@ -10,7 +10,7 @@
   <mybatis:scan base-package="com.freehoon.web.mapper" annotation="org.apache.ibatis.annotations.Mapper" /> 
     
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-     <property name="basePackage" value="com.freehoon.web.board.**" />
+     <property name="basePackage" value="com.freehoon.web.**.**" />
      <property name="annotationClass" value="org.apache.ibatis.annotations.Mapper" />
   </bean>
  

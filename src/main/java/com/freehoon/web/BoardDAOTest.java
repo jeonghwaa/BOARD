@@ -26,7 +26,7 @@ public class BoardDAOTest {
 
 	@Test
 	public void testGetBoardList() throws Exception {
-		List<BoardVO> boardList = boardDAO.getBoardList();
+		List<BoardVO> boardList = boardDAO.getBoardList(null);
 		logger.info("\n Board List \n ");
 		if (boardList.size() > 0) {
 			for (BoardVO list : boardList) {
@@ -61,20 +61,29 @@ public class BoardDAOTest {
 	public void testInsertBoard() throws Exception {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setCate_cd("1");
-		boardVO.setTitle("두번째 게시물 입니다.");
-		boardVO.setContent("두번째 게시물입니다.");
+//		boardVO.setTitle("두번째 게시물 입니다.");
+//		boardVO.setContent("두번째 게시물입니다.");
 		boardVO.setTag("1");
 		boardVO.setReg_id("1");
-		int result = boardDAO.insertBoard(boardVO);
-		logger.info("\n Insert Board Result " + result);
-		if (result == 1) {
-			logger.info("\n 게시물 등록 성공 ");
-		} else {
-			logger.info("\n 게시물 등록 실패");
+		
+		for (int i = 1; i < 1234; i++) {
+			boardVO.setTitle(i + " 번째 게시물 입니다.");
+			boardVO.setContent(i + " 번째 게시물 입니다."); // 1233개까지 만들어 줌
+
+			int result = boardDAO.insertBoard(boardVO);
+			
+			logger.info("\n Insert Board Result " + result);
+			
+			if (result == 1) {
+				logger.info("\n 게시물 등록 성공 ");
+			} else {
+				logger.info("\n 게시물 등록 실패");
+			}
+
 		}
 	}
 
-	@Test
+	@Test	@Ignore
 	public void testUpdateBoard() throws Exception {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setBid(1);
